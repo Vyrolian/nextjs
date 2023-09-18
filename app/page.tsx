@@ -1,14 +1,16 @@
+"use client";
 import Image from "next/image";
+
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState<any | null>(null);
-
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("/api/data");
-      const json = await response.json();
+      const res = await fetch("/api/hello");
+      const json = await res.text();
       setData(json);
+      console.log(json);
     }
     fetchData();
   }, []);
@@ -32,7 +34,7 @@ export default function Home() {
         <button className="fancy-button">Project 6</button>
         <button className="fancy-button">Project 7</button>
       </div>
-      <div>{data && <p>Data from API: {data.message}</p>}</div>
+      <div></div>
     </main>
   );
 }
