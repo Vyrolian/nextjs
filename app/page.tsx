@@ -1,6 +1,17 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [data, setData] = useState<any | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/data");
+      const json = await response.json();
+      setData(json);
+    }
+    fetchData();
+  }, []);
   return (
     <main className="">
       <div className="centered">
@@ -21,6 +32,7 @@ export default function Home() {
         <button className="fancy-button">Project 6</button>
         <button className="fancy-button">Project 7</button>
       </div>
+      <div>{data && <p>Data from API: {data.message}</p>}</div>
     </main>
   );
 }
