@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -14,6 +15,16 @@ export default function Home() {
     }
     fetchData();
   }, []);
+  const [page, setPage] = useState<any>("page1");
+
+  const href = project1;
+  const router = useRouter();
+  useEffect(() => {
+    // Set the pathname property of the router object to the new URL.
+    router.pathname = "/new-url";
+
+    // Call `router.replace()` to update the URL.
+  }, []);
   return (
     <main className="">
       <div className="centered">
@@ -26,7 +37,11 @@ export default function Home() {
         />
       </div>
       <div className="centered">
-        <button className="fancy-button">Project 1</button>
+        <button onClick={() => router.replace("/new-url")}>Click me!</button>
+        <Link href={page}></Link>
+        <button className="fancy-button" onClick={() => setPage("page1")}>
+          Project
+        </button>
         <button className="fancy-button">Project 2</button>
         <button className="fancy-button">Project 3</button>
         <button className="fancy-button">Project 4</button>
