@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   max-width: 80%;
+  flex-wrap: wrap; /* Add this line */
   margin: 0 auto;
 }
 .avatar {
@@ -18,4 +19,11 @@
   display: inline-block;
   font-size: 16px;
   margin: 2px;
+}
+.fancy-button-project1 {
+  background-color: #97a6c3;
+}
+
+.fancy-button-project2 {
+  background-color: red;
 }
