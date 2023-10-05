@@ -22,41 +22,28 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     // ... other mappings ...
   };
 
-  const buttonClass = pathname ? buttonClassMapping[pathname] || "" : "";
+  const buttonClass = pathname ? buttonClassMapping[pathname] || "" : ""; // fallback to "fancy-button" if pathname is not in the mapping
+
   return (
     <html lang="en">
       <head></head>
       <body>
         <header>
           <div className="centered">
-            <Link href="/" className={`fancy-button ${buttonClass}`}>
-              Main Page
-            </Link>
-            <Link href="/project1" className={`fancy-button ${buttonClass}`}>
-              Project 1
-            </Link>
-            <Link href="/project2" className={`fancy-button ${buttonClass}`}>
-              Project 2
-            </Link>
-            <Link href="/project3" className={`fancy-button ${buttonClass}`}>
-              Project 3
-            </Link>
-            <Link href="/project4" className={`fancy-button ${buttonClass}`}>
-              Project 4
-            </Link>
-            <Link href="/project5" className={`fancy-button ${buttonClass}`}>
-              Project 5
-            </Link>
-            <Link href="/project6" className={`fancy-button ${buttonClass}`}>
-              Project 6
-            </Link>
-            <Link href="/project7" className={`fancy-button ${buttonClass}`}>
-              Project 7
-            </Link>
+            {["/", "/project1", "/project2"].map((link) => (
+              <Link
+                key={link}
+                href={link}
+                className={`fancy-button ${buttonClass} ${
+                  link === pathname ? "button-highlighted" : ""
+                }`}
+              >
+                {link === "/" ? "Main Page" : link.replace("/", "")}
+              </Link>
+            ))}
           </div>
         </header>
         <main>{children}</main>
-        {/* You can add a footer here if necessary */}
       </body>
     </html>
   );

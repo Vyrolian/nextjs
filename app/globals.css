@@ -23,7 +23,9 @@
 .fancy-button-project1 {
   background-color: #97a6c3;
 }
-
+.button-highlighted {
+  border: 2px solid black; /* Adjust the border color as needed */
+}
 .fancy-button-project2 {
   background-color: red;
 }
