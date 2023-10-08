@@ -1,0 +1,62 @@
+.calculator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+}
+
+.formbox-1 {
+  width: 20px;
+  height: 30px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+.formbox-2 {
+  width: 20px;
+  height: 20px; /* adjusted height */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px; /* adjusted font size */
+  text-align: center;
+  position: relative;
+  top: -10px; /* shift upwards */
+}
+.formbox-3 {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+.operator-1 {
+  font-size: 18px;
+  margin: 0 10px;
+  position: relative;
+  top: -5px; /* shift upwards */
+}
+.operator-2 {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.equals-button {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
