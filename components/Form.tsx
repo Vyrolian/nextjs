@@ -9,6 +9,7 @@ type FormProps = {
   onExpChange: (value: number | null) => void;
   onModChange: (value: number | null) => void;
   onCalculate: () => void;
+  inputColors: string[];
 };
 
 export default function Form({
@@ -20,6 +21,7 @@ export default function Form({
   onExpChange,
   onModChange,
   onCalculate,
+  inputColors,
 }: FormProps) {
   const handleBaseChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -55,7 +57,7 @@ export default function Form({
     <div className="calculator">
       <input
         type="text"
-        className="formbox-1"
+        className={`formbox-1 ${inputColors[0]}`}
         value={base !== null ? base : ""}
         onChange={handleBaseChange}
         placeholder="Base"
@@ -63,7 +65,7 @@ export default function Form({
       <span className="operator-1">^</span>
       <input
         type="text"
-        className="formbox-2"
+        className={`formbox-2 ${inputColors[1]}`}
         value={exp || ""}
         onChange={handleExpChange}
         placeholder="Exp"
@@ -71,7 +73,7 @@ export default function Form({
       <span className="operator-2">%</span>
       <input
         type="text"
-        className="formbox-3"
+        className={`formbox-3 ${inputColors[2]}`}
         value={mod || ""}
         onChange={handleModChange}
         placeholder="Mod"
@@ -81,7 +83,7 @@ export default function Form({
       </button>
       <input
         type="text"
-        className="formbox"
+        className={`formbox ${inputColors[3]}`}
         style={{ width: "70px" }}
         readOnly
         value={result !== null ? result.toString() : ""}

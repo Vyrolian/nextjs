@@ -33,27 +33,20 @@ export default function Project1() {
     const computedResult = Math.pow(base1, exp1) % mod1;
     setResult1(computedResult);
     setExp2(exp1); // Sync exp of Form 2 with Form 1
-    setBase2(computedResult);
+
+    setBase4(computedResult);
   };
   const calculateResult2 = () => {
     if (base2 === null || exp2 === null || mod2 === null || mod2 === 0) return;
     const computedResult = Math.pow(base2, exp2) % mod2;
     setResult2(computedResult);
   };
-  const handleExp1Change = (value: number | null) => {
-    setExp1(value);
-  };
 
-  const handleExpChange3 = (value: number | null) => {
-    setExp3(value);
-    setExp4(value); // Sync exp of Form 4 with Form 3
-  };
-  const handleModChange3 = (value: number | null) => setMod3(value);
   const calculateResult3 = () => {
     if (!base3 || !exp3 || !mod3) return;
     const computedResult = Math.pow(base3, exp3) % mod3;
     setResult3(computedResult);
-    setBase4(computedResult); // Set base of Form 4
+    setExp4(exp3);
   };
   const calculateResult4 = () => {
     if (!base4 || !exp4 || !mod4) return;
@@ -71,9 +64,10 @@ export default function Project1() {
         mod={mod1}
         result={result1}
         onBaseChange={setBase1}
-        onExpChange={handleExp1Change}
+        onExpChange={setExp1}
         onModChange={setMod1}
         onCalculate={calculateResult1}
+        inputColors={["input-blue", "input-blue", "input-blue", "input-blue"]}
       />
       <Form
         base={base2}
@@ -84,6 +78,7 @@ export default function Project1() {
         onExpChange={setExp2}
         onModChange={setMod2}
         onCalculate={calculateResult2}
+        inputColors={["input-orange", "input-blue", "input-blue", "input-blue"]}
       />
       <Form
         base={base3}
@@ -91,9 +86,15 @@ export default function Project1() {
         mod={mod3}
         result={result3}
         onBaseChange={setBase3}
-        onExpChange={handleExpChange3}
-        onModChange={handleModChange3}
+        onExpChange={setExp3}
+        onModChange={setMod3}
         onCalculate={calculateResult3}
+        inputColors={[
+          "input-orange",
+          "input-orange",
+          "input-orange",
+          "input-orange",
+        ]}
       />
       <Form
         base={base4}
@@ -103,7 +104,13 @@ export default function Project1() {
         onBaseChange={setBase4}
         onExpChange={setExp4}
         onModChange={setMod4}
-        onCalculate={calculateResult4} // Remember to define calculateResult4
+        onCalculate={calculateResult4}
+        inputColors={[
+          "input-blue",
+          "input-orange",
+          "input-orange",
+          "input-orange",
+        ]}
       />
     </div>
   );

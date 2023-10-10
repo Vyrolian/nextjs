@@ -8,6 +8,15 @@
   background-color: #fff;
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
 }
+.input-blue {
+  background-color: rgb(93, 93, 197);
+  /* add other styling as necessary */
+}
+
+.input-orange {
+  background-color: rgb(232, 185, 100);
+  /* add other styling as necessary */
+}
 
 .formbox-1 {
   width: 20px;
