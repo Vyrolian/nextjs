@@ -9,7 +9,7 @@
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
 }
 .input-blue {
-  background-color: rgb(93, 93, 197);
+  background-color: #97a6c3;
   /* add other styling as necessary */
 }
 
@@ -68,4 +68,26 @@
   color: white;
   cursor: pointer;
   font-size: 16px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px; /* adjust as necessary */
+  gap: 15vw;
+}
+
+.form-element {
+  width: 100%; /* adjust as necessary */
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 20px; /* adjust as necessary */
 }

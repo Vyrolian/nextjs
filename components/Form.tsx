@@ -60,15 +60,13 @@ export default function Form({
         className={`formbox-1 ${inputColors[0]}`}
         value={base !== null ? base : ""}
         onChange={handleBaseChange}
-        placeholder="Base"
       />
       <span className="operator-1">^</span>
       <input
         type="text"
         className={`formbox-2 ${inputColors[1]}`}
-        value={exp || ""}
+        value={exp !== null ? exp : ""}
         onChange={handleExpChange}
-        placeholder="Exp"
       />
       <span className="operator-2">%</span>
       <input
@@ -76,18 +74,15 @@ export default function Form({
         className={`formbox-3 ${inputColors[2]}`}
         value={mod || ""}
         onChange={handleModChange}
-        placeholder="Mod"
       />
       <button className="equals-button" onClick={onCalculate}>
         =
       </button>
       <input
         type="text"
-        className={`formbox ${inputColors[3]}`}
-        style={{ width: "70px" }}
+        className={`formbox-3 ${inputColors[3]}`}
         readOnly
         value={result !== null ? result.toString() : ""}
-        placeholder="Result"
       />
     </div>
   );
