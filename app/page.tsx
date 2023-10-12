@@ -31,13 +31,7 @@ export default function Home() {
         </h1>
       </div>
       <div className="centered">
-        <Image
-          src="/avatar.png"
-          alt="yae miko"
-          width={300}
-          height={300}
-          priority
-        />
+        <Image src="/avatar.png" alt="yae miko" width={300} height={300} />
       </div>
 
       <div></div>
