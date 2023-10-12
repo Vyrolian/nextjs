@@ -21,6 +21,16 @@ export default function Home() {
   return (
     <main className="">
       <div className="centered">
+        <h1>
+          Керемша Дмитрий Александрович <br />
+        </h1>
+      </div>
+      <div className="centered">
+        <h1>
+          УИР 051 <br />
+        </h1>
+      </div>
+      <div className="centered">
         <Image
           src="/avatar.png"
           alt="yae miko"
