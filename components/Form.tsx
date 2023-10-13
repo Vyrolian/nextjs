@@ -25,18 +25,18 @@ export default function Form({
 }: FormProps) {
   const handleBaseChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    console.log("Input Value:", value); // Logging the raw input value
+    console.log("Input Value:", value);
 
     if (value === "") {
-      onBaseChange(null); // Set to null when input is empty
-      console.log("Setting state to null due to empty input"); // Log status
+      onBaseChange(null);
+      console.log("Setting state to null due to empty input");
     } else {
       const numValue = parseInt(value, 10);
-      console.log("Parsed Number Value:", numValue); // Logging parsed number value
+      console.log("Parsed Number Value:", numValue);
 
       if (!isNaN(numValue)) {
         onBaseChange(numValue);
-        console.log("Setting state to:", numValue); // Log the value being set to state
+        console.log("Setting state to:", numValue);
       }
     }
   };
