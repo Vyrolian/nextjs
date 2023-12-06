@@ -30,7 +30,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <body>
         <header>
           <div className="centered">
-            {["/", "/project1", "/project2"].map((link) => (
+            {["/", "/project1", "/project2", "project5"].map((link) => (
               <Link
                 key={link}
                 href={link}
