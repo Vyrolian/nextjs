@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import CurrencyRate from "./Project5/CurrencyRate";
-
+import Image from "next/image";
+import yae from "../images/yae2sticker.webp";
 interface RateData {
   [key: number]: number | undefined;
 }
@@ -82,6 +83,16 @@ const Project5: React.FC = () => {
 
   return (
     <div>
+      <div className="centered">
+        <Image
+          src={yae}
+          alt="Description of GIF"
+          style={{ width: "250px", height: "auto" }}
+        />
+      </div>
+      <div className="centered">
+        <CurrencyRate />
+      </div>
       <select onChange={handleSelectChange} value={selectedOption}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
