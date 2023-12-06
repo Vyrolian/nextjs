@@ -13,17 +13,16 @@ const Project6: React.FC = () => {
   const [amounts, setAmounts] = useState<AlcoholAmounts | null>(null);
 
   const calculateAlcohol = (userWeight: number): AlcoholAmounts => {
-    // Coefficients would need to be adjusted to your specific calculation rules
     const COGNAC_COEFFICIENT = 2.36;
     const PORT_WINE_COEFFICIENT = 4.98;
     const DRY_WINE_COEFFICIENT = 7.88;
     const BEER_COEFFICIENT = 15.75;
 
     return {
-      cognac: parseFloat((userWeight * COGNAC_COEFFICIENT).toFixed(2)),
-      portWine: parseFloat((userWeight * PORT_WINE_COEFFICIENT).toFixed(2)),
-      dryWine: parseFloat((userWeight * DRY_WINE_COEFFICIENT).toFixed(2)),
-      beer: parseFloat((userWeight * BEER_COEFFICIENT).toFixed(2)),
+      cognac: Math.ceil(userWeight * COGNAC_COEFFICIENT),
+      portWine: Math.ceil(userWeight * PORT_WINE_COEFFICIENT),
+      dryWine: Math.ceil(userWeight * DRY_WINE_COEFFICIENT),
+      beer: Math.ceil(userWeight * BEER_COEFFICIENT),
     };
   };
 
@@ -56,6 +55,7 @@ const Project6: React.FC = () => {
             type="number"
             value={amounts ? amounts.cognac : ""}
             onChange={(e) => handleAmountChange("cognac", e.target.value)}
+            style={{ color: "red" }}
           />{" "}
           gr.
         </label>
@@ -66,6 +66,7 @@ const Project6: React.FC = () => {
             type="number"
             value={amounts ? amounts.portWine : ""}
             onChange={(e) => handleAmountChange("portWine", e.target.value)}
+            style={{ color: "red" }}
           />{" "}
           gr.
         </label>
@@ -76,6 +77,7 @@ const Project6: React.FC = () => {
             type="number"
             value={amounts ? amounts.dryWine : ""}
             onChange={(e) => handleAmountChange("dryWine", e.target.value)}
+            style={{ color: "red" }}
           />{" "}
           gr.
         </label>
@@ -86,6 +88,7 @@ const Project6: React.FC = () => {
             type="number"
             value={amounts ? amounts.beer : ""}
             onChange={(e) => handleAmountChange("beer", e.target.value)}
+            style={{ color: "red" }}
           />{" "}
           gr.
         </label>
