@@ -6,7 +6,7 @@ function DisplayIPs() {
 
   useEffect(() => {
     // Fetching the IPs from your API
-    fetch("../../pages/api/get-ips")
+    fetch("../api/get-ips")
       .then((response) => response.json())
       .then((data) => setIps(data))
       .catch((error) => console.error("Error fetching IPs:", error));
