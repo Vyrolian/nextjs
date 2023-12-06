@@ -30,17 +30,19 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <body>
         <header>
           <div className="centered">
-            {["/", "/project1", "/project2", "project5"].map((link) => (
-              <Link
-                key={link}
-                href={link}
-                className={`fancy-button ${buttonClass} ${
-                  link === pathname ? "button-highlighted" : ""
-                }`}
-              >
-                {link === "/" ? "Main Page" : link.replace("/", "")}
-              </Link>
-            ))}
+            {["/", "/project1", "/project2", "/project5", "/project8"].map(
+              (link) => (
+                <Link
+                  key={link}
+                  href={link}
+                  className={`fancy-button ${buttonClass} ${
+                    link === pathname ? "button-highlighted" : ""
+                  }`}
+                >
+                  {link === "/" ? "Main Page" : link.replace("/", "")}
+                </Link>
+              )
+            )}
           </div>
         </header>
         <main>{children}</main>

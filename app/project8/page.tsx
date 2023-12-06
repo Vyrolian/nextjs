@@ -1,11 +1,11 @@
-import Project5 from "@/components/Project5/Project5";
+import Project8 from "@/components/Project8/Project8";
 import Link from "next/link";
 
 export default function page() {
   return (
     <div className="centered">
       <div>
-        <Project5 />
+        <Project8 />
       </div>
     </div>
   );

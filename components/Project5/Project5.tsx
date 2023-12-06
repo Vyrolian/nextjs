@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import CurrencyRate from "./Project5/CurrencyRate";
+import CurrencyRate from "./CurrencyRate";
 import Image from "next/image";
-import yae from "../images/yae2sticker.webp";
+import yae from "../../images/yae2sticker.webp";
 interface RateData {
   [key: number]: number | undefined;
 }
