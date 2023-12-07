@@ -51,7 +51,19 @@ const Project5: React.FC = () => {
       case "currencies":
         url = `${baseUrl}/Currencies`;
         break;
-      // ... other cases based on value
+      case "currency_desc":
+        // Assuming currency ID is required for the description
+        url = `${baseUrl}/Currencies/451`; // Replace {currencyId} with the actual currency ID
+        break;
+
+      case "daily_rates_today":
+        url = `${baseUrl}/Rates?onDate=${
+          new Date().toISOString().split("T")[0]
+        }&Periodicity=0`; // Rates for today
+        break;
+      case "monthly_rates":
+        url = `${baseUrl}/Rates?Periodicity=1`; // Monthly rates
+        break;
       default:
         setData(null);
         return;
