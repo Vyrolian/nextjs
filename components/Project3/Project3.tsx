@@ -6,9 +6,7 @@ const Project3 = () => {
   const urls = [
     "https://nextjs.org",
     "https://vercel.com/",
-    "https://www.youtube.com/watch?v=kEoumdx4Xbc",
     "https://nodejs.org/en",
-    "https://www.youtube.com/watch?v=9q9Pd8N6PfA&pp=ygUSZ2FueXUgYmFuZyBib29zdGVk",
   ];
 
   useEffect(() => {

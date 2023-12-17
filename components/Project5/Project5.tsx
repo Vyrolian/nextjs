@@ -6,7 +6,14 @@ import yae from "../../images/yae2sticker.webp";
 interface RateData {
   [key: number]: number | undefined;
 }
-
+interface CurrencyRateResponse {
+  Cur_ID: number;
+  Date: string;
+  Cur_Abbreviation: string;
+  Cur_Scale: number;
+  Cur_Name: string;
+  Cur_OfficialRate?: number;
+}
 const Project5: React.FC = () => {
   const options = [
     { value: "currencies", label: "справочник валют" },
@@ -17,24 +24,6 @@ const Project5: React.FC = () => {
       label: "курс валюты на дату по цифровому коду валюты (ISO 4217)",
     },
     {
-      value: "currency_rate_date_letter_iso",
-      label: "курс валюты на дату по буквенному коду валюты (ISO 4217)",
-    },
-    { value: "currency_rate_today", label: "курс валюты на сегодня" },
-    {
-      value: "currency_rate_today_iso_num",
-      label: "курс валюты на сегодня по цифровому коду валюты (ISO 4217)",
-    },
-    {
-      value: "currency_rate_today_iso_letter",
-      label: "курс валюты на сегодня по буквенному коду валюты (ISO 4217)",
-    },
-    { value: "currency_rate_period", label: "курс валюты за период" },
-    {
-      value: "daily_rates_date",
-      label: "все курсы, устанавливаемые ежедневно на дату",
-    },
-    {
       value: "daily_rates_today",
       label: "все курсы, устанавливаемые ежедневно на сегодня",
     },
@@ -42,7 +31,8 @@ const Project5: React.FC = () => {
   ];
   const [selectedOption, setSelectedOption] = useState(options[0].value);
   const [data, setData] = useState(null);
-
+  const [currencyId, setCurrencyId] = useState("");
+  const [date, setDate] = useState<any>(null);
   const fetchData = async () => {
     const baseUrl = "https://www.nbrb.by/API/ExRates";
     let url;
@@ -53,7 +43,7 @@ const Project5: React.FC = () => {
         break;
       case "currency_desc":
         // Assuming currency ID is required for the description
-        url = `${baseUrl}/Currencies/451`; // Replace {currencyId} with the actual currency ID
+        url = `${baseUrl}/Currencies/${currencyId}`;
         break;
 
       case "daily_rates_today":
@@ -63,6 +53,12 @@ const Project5: React.FC = () => {
         break;
       case "monthly_rates":
         url = `${baseUrl}/Rates?Periodicity=1`; // Monthly rates
+        break;
+      case "currency_rate_date":
+        url = `${baseUrl}/Rates/${currencyId}?onDate=${date}`;
+        break;
+      case "currency_rate_date_iso":
+        url = `${baseUrl}/Rates/${currencyId}?onDate=${date}&ParamMode=2`;
         break;
       default:
         setData(null);
@@ -92,7 +88,21 @@ const Project5: React.FC = () => {
   }) => {
     setSelectedOption(event.target.value);
   };
+  const renderData = () => {
+    if (!data) {
+      return <p>No data to display</p>;
+    }
 
+    if (selectedOption.includes("currency_rate") && data.Cur_OfficialRate) {
+      return (
+        <div>
+          <p>{`Курс для ${data.Cur_Name}: ${data.Cur_OfficialRate}`}</p>
+        </div>
+      );
+    } else {
+      return <pre>{JSON.stringify(data, null, 2)}</pre>;
+    }
+  };
   return (
     <div>
       <div className="centered">
@@ -112,14 +122,32 @@ const Project5: React.FC = () => {
           </option>
         ))}
       </select>
+      {selectedOption === "currency_desc" && (
+        <input
+          type="text"
+          placeholder="Enter Currency ID"
+          value={currencyId}
+          onChange={(e) => setCurrencyId(e.target.value)}
+        />
+      )}
+      {(selectedOption === "currency_rate_date" ||
+        selectedOption === "currency_rate_date_iso") && (
+        <>
+          <input
+            type="text"
+            placeholder="Enter Currency ID"
+            value={currencyId}
+            onChange={(e) => setCurrencyId(e.target.value)}
+          />
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </>
+      )}
       <button onClick={fetchData}>получить</button>
-      <div>
-        {data ? (
-          <pre>{JSON.stringify(data, null, 2)}</pre> // Display data in a formatted way
-        ) : (
-          <p>No data to display</p>
-        )}
-      </div>
+      <div>{renderData()}</div>
     </div>
   );
 };
