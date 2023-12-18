@@ -30,7 +30,7 @@ const Project5: React.FC = () => {
     { value: "monthly_rates", label: "все курсы, устанавливаемые ежемесячно" },
   ];
   const [selectedOption, setSelectedOption] = useState(options[0].value);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [currencyId, setCurrencyId] = useState("");
   const [date, setDate] = useState<any>(null);
   const fetchData = async () => {
